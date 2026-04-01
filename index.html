@@ -7,7 +7,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#0a0a0a;color:#fff;font-family:'Segoe UI',Tahoma,sans-serif;overflow:hidden;height:100vh;user-select:none}
-.game-container{display:flex;justify-content:center;align-items:center;height:100vh;gap:20px}
+.game-container{display:flex;justify-content:center;align-items:center;height:100vh;gap:16px}
 .side-panel-left{display:flex;flex-direction:column;align-items:flex-end;gap:10px;min-width:180px}
 .side-panel-right{display:flex;flex-direction:column;align-items:center;gap:10px;min-width:120px}
 .hold-box,.next-box{background:rgba(20,20,30,.9);border:2px solid #333;border-radius:8px;padding:10px;text-align:center}
@@ -30,15 +30,11 @@ body{background:#0a0a0a;color:#fff;font-family:'Segoe UI',Tahoma,sans-serif;over
 @keyframes evtFade{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-30px)}}
 .overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);display:flex;justify-content:center;align-items:center;z-index:100}
 .overlay.hidden{display:none}
-
-/* Main menu - clean */
 .main-menu{text-align:center;max-width:400px;width:90%}
 .main-menu h1{font-size:48px;margin-bottom:6px;background:linear-gradient(135deg,#ffaa00,#ff4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .main-menu .sub{font-size:15px;color:#666;margin-bottom:50px}
 .main-menu .btn{max-width:300px;margin:10px auto}
-
-/* Settings panel */
-.settings-panel{background:#1a1a2e;border:2px solid #444;border-radius:16px;padding:30px 35px;max-width:540px;width:92%;max-height:90vh;overflow-y:auto}
+.settings-panel{background:#1a1a2e;border:2px solid #444;border-radius:16px;padding:30px 35px;max-width:560px;width:92%;max-height:90vh;overflow-y:auto}
 .settings-panel h2{text-align:center;font-size:24px;color:#ffaa00;margin-bottom:20px}
 .msec{margin-bottom:18px}
 .msec h3{color:#888;font-size:13px;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;border-bottom:1px solid #333;padding-bottom:5px}
@@ -66,16 +62,16 @@ body{background:#0a0a0a;color:#fff;font-family:'Segoe UI',Tahoma,sans-serif;over
 .pause-panel{text-align:center}
 .pause-panel h2{font-size:36px;margin-bottom:20px;color:#ffaa00}
 .pause-panel .btn{max-width:250px;margin:10px auto}
-.tab-bar{display:flex;gap:4px;margin-bottom:20px}
-.tab-btn{flex:1;padding:10px;background:#222;border:1px solid #444;color:#888;cursor:pointer;border-radius:8px 8px 0 0;font-size:13px}
+.tab-bar{display:flex;gap:4px;margin-bottom:20px;flex-wrap:wrap}
+.tab-btn{flex:1;padding:10px;background:#222;border:1px solid #444;color:#888;cursor:pointer;border-radius:8px 8px 0 0;font-size:13px;min-width:60px}
 .tab-btn.active{background:#333;color:#fff;border-bottom-color:#333}
 .tab-content{display:none}.tab-content.active{display:block}
 .result-panel{text-align:center}
 .result-panel h2{font-size:32px;margin-bottom:20px;color:#ffaa00}
-.result-stats{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:30px}
-.result-stat{background:#222;border-radius:10px;padding:15px}
+.result-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.result-stat{background:#222;border-radius:10px;padding:12px}
 .result-stat .rl{font-size:11px;color:#666;text-transform:uppercase}
-.result-stat .rv{font-size:26px;font-weight:bold}
+.result-stat .rv{font-size:24px;font-weight:bold}
 .chk{display:flex;align-items:center;gap:8px;padding:6px 0}
 .chk input[type="checkbox"]{width:18px;height:18px;accent-color:#ffaa00}
 .chk label{color:#ccc;font-size:13px}
@@ -90,11 +86,85 @@ body{background:#0a0a0a;color:#fff;font-family:'Segoe UI',Tahoma,sans-serif;over
 .settings-panel::-webkit-scrollbar-track{background:transparent}
 .settings-panel::-webkit-scrollbar-thumb{background:#444;border-radius:3px}
 .grav-indicator{position:absolute;top:8px;left:50%;transform:translateX(-50%);font-size:10px;color:#666;pointer-events:none;z-index:5;white-space:nowrap}
+
+/* ── OPPONENT SECTION ── */
+.opponent-section{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  min-width:100px;
+}
+.opp-title{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:2px}
+.diff-badge{
+  display:inline-block;padding:3px 10px;border-radius:12px;
+  font-size:11px;font-weight:bold;letter-spacing:1px;margin-bottom:4px;
+}
+.diff-easy{background:#1a3a1a;color:#44ff44;border:1px solid #44ff44}
+.diff-normal{background:#1a2a3a;color:#44aaff;border:1px solid #44aaff}
+.diff-hard{background:#3a2a1a;color:#ffaa00;border:1px solid #ffaa00}
+.diff-insane{background:#3a1a1a;color:#ff4444;border:1px solid #ff4444}
+
+/* garbage queue */
+.garbage-queue{
+  width:100%;background:#111;border:1px solid #2a2a2a;border-radius:4px;
+  padding:6px 8px;text-align:center;
+}
+.gq-label{font-size:9px;color:#555;letter-spacing:1px;margin-bottom:3px;text-transform:uppercase}
+.garbage-bar-wrap{width:100%;height:8px;background:#222;border-radius:4px;overflow:hidden;margin-bottom:2px}
+.garbage-bar-fill{height:100%;border-radius:4px;transition:width .15s;background:linear-gradient(90deg,#ff4400,#ff2222)}
+.garbage-count{font-size:22px;font-weight:bold;color:#ff4444}
+
+/* opp board */
+.opp-board-frame{
+  position:relative;
+  border:2px solid #333;border-radius:4px;overflow:hidden;
+}
+#oCvs{display:block;background:#08080c}
+
+/* opp stats */
+.opp-stats{
+  background:rgba(20,20,30,.9);border:1px solid #2a2a2a;border-radius:6px;
+  padding:7px 10px;width:100%;
+}
+.opp-stat{display:flex;justify-content:space-between;align-items:center;padding:2px 0}
+.opp-stat .ol{font-size:10px;color:#555;letter-spacing:1px;text-transform:uppercase}
+.opp-stat .ov{font-size:14px;font-weight:bold;color:#ff4444}
+
+/* flash overlays */
+.garbage-flash{
+  position:absolute;bottom:0;left:0;right:0;height:50%;
+  pointer-events:none;z-index:10;opacity:0;
+  background:linear-gradient(0deg,rgba(255,60,0,.45),transparent);
+}
+.garbage-flash.on{animation:gbF .4s ease-out forwards}
+@keyframes gbF{0%{opacity:1}100%{opacity:0}}
+
+/* red warning bar on player board right edge */
+.gb-edge-bar{
+  position:absolute;top:0;right:0;bottom:0;width:5px;
+  pointer-events:none;z-index:15;
+  background:linear-gradient(180deg,transparent,#ff4400);
+  opacity:0;border-radius:0 2px 2px 0;
+}
+.gb-edge-bar.active{animation:edgeWarn .3s ease-in-out infinite}
+@keyframes edgeWarn{0%,100%{opacity:0}50%{opacity:1}}
+
+/* attack popup */
+.attack-popup{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-size:20px;font-weight:900;pointer-events:none;z-index:30;
+  opacity:0;white-space:nowrap;text-shadow:0 0 12px currentColor;
+}
+.attack-popup.show{animation:atkPop .8s ease-out forwards}
+@keyframes atkPop{0%{opacity:1;transform:translate(-50%,-50%) scale(.7)}40%{opacity:1;transform:translate(-50%,-60%) scale(1.1)}100%{opacity:0;transform:translate(-50%,-90%) scale(1)}}
+
+/* diff description table */
+.diff-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}
+.diff-table td{padding:5px 8px;border-bottom:1px solid #222}
+.diff-table tr:last-child td{border:none}
 </style>
 </head>
 <body>
 
-<!-- ===== MAIN MENU ===== -->
+<!-- MAIN MENU -->
 <div class="overlay" id="olMain">
   <div class="main-menu">
     <h1>4-WIDE</h1>
@@ -104,15 +174,16 @@ body{background:#0a0a0a;color:#fff;font-family:'Segoe UI',Tahoma,sans-serif;over
   </div>
 </div>
 
-<!-- ===== SETTINGS ===== -->
+<!-- SETTINGS -->
 <div class="overlay hidden" id="olSettings">
 <div class="settings-panel">
 <h2>설정</h2>
 <div class="tab-bar">
-<button class="tab-btn active" data-tab="t1">게임</button>
-<button class="tab-btn" data-tab="t2">핸들링</button>
-<button class="tab-btn" data-tab="t3">키설정</button>
-<button class="tab-btn" data-tab="t4">목표</button>
+  <button class="tab-btn active" data-tab="t1">게임</button>
+  <button class="tab-btn" data-tab="t2">핸들링</button>
+  <button class="tab-btn" data-tab="t3">키설정</button>
+  <button class="tab-btn" data-tab="t4">목표</button>
+  <button class="tab-btn" data-tab="t5" style="color:#ff6644">상대</button>
 </div>
 
 <div class="tab-content active" id="t1">
@@ -120,41 +191,24 @@ body{background:#0a0a0a;color:#fff;font-family:'Segoe UI',Tahoma,sans-serif;over
 <div class="srow"><label>고스트</label><select id="sGhost"><option value="1">켜기</option><option value="0">끄기</option></select></div>
 <div class="srow"><label>그리드</label><select id="sGrid"><option value="1">켜기</option><option value="0">끄기</option></select></div>
 <div class="srow"><label>랜덤방식</label><select id="sRng"><option value="7bag">7-Bag</option><option value="14bag">14-Bag</option><option value="rnd">완전랜덤</option></select></div>
-<div class="slider-row"><div class="slider-header"><label>중력</label><span class="slider-val" id="vGrav">1000ms</span></div>
-<input type="range" id="sGrav" min="50" max="3000" step="50" value="1000">
-<div class="slider-desc">블록이 자동으로 1칸 내려오는 간격</div></div>
-<div class="slider-row"><div class="slider-header"><label>잠금 딜레이</label><span class="slider-val" id="vLock">500ms</span></div>
-<input type="range" id="sLock" min="50" max="2000" step="50" value="500">
-<div class="slider-desc">바닥에 닿은 후 고정까지 여유시간 (이동/회전으로 연장, 최대 15회)</div></div>
-<div class="slider-row"><div class="slider-header"><label>넥스트 수</label><span class="slider-val" id="vNext">5</span></div>
-<input type="range" id="sNext" min="1" max="6" step="1" value="5"></div>
+<div class="slider-row"><div class="slider-header"><label>중력</label><span class="slider-val" id="vGrav">1000ms</span></div><input type="range" id="sGrav" min="50" max="3000" step="50" value="1000"><div class="slider-desc">블록이 자동으로 1칸 내려오는 간격</div></div>
+<div class="slider-row"><div class="slider-header"><label>잠금 딜레이</label><span class="slider-val" id="vLock">500ms</span></div><input type="range" id="sLock" min="50" max="2000" step="50" value="500"><div class="slider-desc">바닥에 닿은 후 고정까지 여유시간 (이동/회전으로 연장, 최대 15회)</div></div>
+<div class="slider-row"><div class="slider-header"><label>넥스트 수</label><span class="slider-val" id="vNext">5</span></div><input type="range" id="sNext" min="1" max="6" step="1" value="5"></div>
 </div>
 <div class="msec"><h3>중력 증가</h3>
 <div class="chk"><input type="checkbox" id="sGravUp"><label for="sGravUp">시간에 따라 중력 증가</label></div>
-<div class="indent" id="gravUpOpts">
-<div class="slider-row"><div class="slider-header"><label>증가 간격</label><span class="slider-val" id="vGravInt">30초</span></div>
-<input type="range" id="sGravInt" min="5" max="120" step="5" value="30">
-<div class="slider-desc">이 시간마다 중력이 빨라짐</div></div>
-<div class="slider-row"><div class="slider-header"><label>증가량</label><span class="slider-val" id="vGravAmt">50ms</span></div>
-<input type="range" id="sGravAmt" min="10" max="200" step="10" value="50">
-<div class="slider-desc">간격마다 중력값을 이만큼 줄여서 빨라짐</div></div>
-<div class="slider-row"><div class="slider-header"><label>최소 중력</label><span class="slider-val" id="vGravMin">50ms</span></div>
-<input type="range" id="sGravMin" min="20" max="500" step="10" value="50">
-<div class="slider-desc">이 값 이하로는 빨라지지 않음</div></div>
+<div class="indent">
+<div class="slider-row"><div class="slider-header"><label>증가 간격</label><span class="slider-val" id="vGravInt">30초</span></div><input type="range" id="sGravInt" min="5" max="120" step="5" value="30"><div class="slider-desc">이 시간마다 중력이 빨라짐</div></div>
+<div class="slider-row"><div class="slider-header"><label>증가량</label><span class="slider-val" id="vGravAmt">50ms</span></div><input type="range" id="sGravAmt" min="10" max="200" step="10" value="50"><div class="slider-desc">간격마다 중력값을 이만큼 줄여서 빨라짐</div></div>
+<div class="slider-row"><div class="slider-header"><label>최소 중력</label><span class="slider-val" id="vGravMin">50ms</span></div><input type="range" id="sGravMin" min="20" max="500" step="10" value="50"><div class="slider-desc">이 값 이하로는 빨라지지 않음</div></div>
 </div></div>
 </div>
 
 <div class="tab-content" id="t2">
 <div class="msec"><h3>핸들링</h3>
-<div class="slider-row"><div class="slider-header"><label>DAS</label><span class="slider-val" id="vDas">100ms</span></div>
-<input type="range" id="sDas" min="0" max="300" step="5" value="100">
-<div class="slider-desc">키를 누르고 자동이동 시작까지 대기시간</div></div>
-<div class="slider-row"><div class="slider-header"><label>ARR</label><span class="slider-val" id="vArr">0ms</span></div>
-<input type="range" id="sArr" min="0" max="100" step="1" value="0">
-<div class="slider-desc">자동이동 반복 간격 (0 = 즉시 끝까지)</div></div>
-<div class="slider-row"><div class="slider-header"><label>SDF</label><span class="slider-val" id="vSdf">INF</span></div>
-<input type="range" id="sSdf" min="1" max="41" step="1" value="41">
-<div class="slider-desc">소프트드롭 속도 배율 (41 = 즉시 바닥)</div></div>
+<div class="slider-row"><div class="slider-header"><label>DAS</label><span class="slider-val" id="vDas">100ms</span></div><input type="range" id="sDas" min="0" max="300" step="5" value="100"><div class="slider-desc">키를 누르고 자동이동 시작까지 대기시간</div></div>
+<div class="slider-row"><div class="slider-header"><label>ARR</label><span class="slider-val" id="vArr">0ms</span></div><input type="range" id="sArr" min="0" max="100" step="1" value="0"><div class="slider-desc">자동이동 반복 간격 (0 = 즉시 끝까지)</div></div>
+<div class="slider-row"><div class="slider-header"><label>SDF</label><span class="slider-val" id="vSdf">INF</span></div><input type="range" id="sSdf" min="1" max="41" step="1" value="41"><div class="slider-desc">소프트드롭 속도 배율 (41 = 즉시 바닥)</div></div>
 </div></div>
 
 <div class="tab-content" id="t3">
@@ -174,20 +228,43 @@ body{background:#0a0a0a;color:#fff;font-family:'Segoe UI',Tahoma,sans-serif;over
 
 <div class="tab-content" id="t4">
 <div class="msec"><h3>목표 설정</h3>
-<div class="gsec"><div class="chk"><input type="checkbox" id="gCmbOn"><label for="gCmbOn">목표 콤보</label></div>
-<div class="indent"><div class="slider-row"><div class="slider-header"><label>콤보</label><span class="slider-val" id="vGCmb">20</span></div>
-<input type="range" id="gCmbV" min="1" max="100" step="1" value="20"></div></div></div>
-<div class="gsec"><div class="chk"><input type="checkbox" id="gLinOn"><label for="gLinOn">목표 라인</label></div>
-<div class="indent"><div class="slider-row"><div class="slider-header"><label>라인</label><span class="slider-val" id="vGLin">100</span></div>
-<input type="range" id="gLinV" min="10" max="500" step="10" value="100"></div></div></div>
-<div class="gsec"><div class="chk"><input type="checkbox" id="gTimOn"><label for="gTimOn">제한 시간</label></div>
-<div class="indent"><div class="slider-row"><div class="slider-header"><label>시간</label><span class="slider-val" id="vGTim">120초</span></div>
-<input type="range" id="gTimV" min="10" max="600" step="10" value="120"></div></div></div>
-<div class="gsec"><div class="chk"><input type="checkbox" id="gScrOn"><label for="gScrOn">목표 점수</label></div>
-<div class="indent"><div class="slider-row"><div class="slider-header"><label>점수</label><span class="slider-val" id="vGScr">10000</span></div>
-<input type="range" id="gScrV" min="1000" max="100000" step="1000" value="10000"></div></div></div>
+<div class="gsec"><div class="chk"><input type="checkbox" id="gCmbOn"><label for="gCmbOn">목표 콤보</label></div><div class="indent"><div class="slider-row"><div class="slider-header"><label>콤보</label><span class="slider-val" id="vGCmb">20</span></div><input type="range" id="gCmbV" min="1" max="100" step="1" value="20"></div></div></div>
+<div class="gsec"><div class="chk"><input type="checkbox" id="gLinOn"><label for="gLinOn">목표 라인</label></div><div class="indent"><div class="slider-row"><div class="slider-header"><label>라인</label><span class="slider-val" id="vGLin">100</span></div><input type="range" id="gLinV" min="10" max="500" step="10" value="100"></div></div></div>
+<div class="gsec"><div class="chk"><input type="checkbox" id="gTimOn"><label for="gTimOn">제한 시간</label></div><div class="indent"><div class="slider-row"><div class="slider-header"><label>시간</label><span class="slider-val" id="vGTim">120초</span></div><input type="range" id="gTimV" min="10" max="600" step="10" value="120"></div></div></div>
+<div class="gsec"><div class="chk"><input type="checkbox" id="gScrOn"><label for="gScrOn">목표 점수</label></div><div class="indent"><div class="slider-row"><div class="slider-header"><label>점수</label><span class="slider-val" id="vGScr">10000</span></div><input type="range" id="gScrV" min="1000" max="100000" step="1000" value="10000"></div></div></div>
 </div>
 <p style="font-size:11px;color:#555;text-align:center">체크한 목표 중 하나 달성 시 클리어</p>
+</div>
+
+<!-- ★ 상대 탭 ★ -->
+<div class="tab-content" id="t5">
+<div class="msec"><h3>가상 상대</h3>
+<div class="srow"><label>상대 활성화</label>
+  <select id="sOppOn"><option value="0">끄기</option><option value="1">켜기</option></select>
+</div>
+<div class="srow"><label>난이도</label>
+  <select id="sOppDiff">
+    <option value="easy">Easy</option>
+    <option value="normal" selected>Normal</option>
+    <option value="hard">Hard</option>
+    <option value="insane">Insane</option>
+  </select>
+</div>
+</div>
+<div class="msec"><h3>난이도 상세</h3>
+<table class="diff-table">
+<tr><td><span style="color:#44ff44">■ Easy</span></td><td style="color:#888">3~5초마다 · 1줄 공격 · 자주 쉬어감</td></tr>
+<tr><td><span style="color:#44aaff">■ Normal</span></td><td style="color:#888">2~3초마다 · 1~2줄 · 가끔 연속</td></tr>
+<tr><td><span style="color:#ffaa00">■ Hard</span></td><td style="color:#888">1~2초마다 · 2~3줄 · 거의 안 쉼</td></tr>
+<tr><td><span style="color:#ff4444">■ Insane</span></td><td style="color:#888">0.5~1초마다 · 3~4줄 · 쉬지 않음</td></tr>
+</table>
+<div style="margin-top:12px;font-size:11px;color:#555;line-height:1.8">
+  • 가비지 구멍은 매번 랜덤 위치<br>
+  • 내가 라인 클리어하면 가비지 취소 + 반격<br>
+  • 상대 보드가 꽉 차면 상대가 리셋됨<br>
+  • 가비지는 즉시가 아닌 0.8초 후 실제 반영
+</div>
+</div>
 </div>
 
 <button class="btn btn-sub" onclick="saveS()">설정 저장</button>
@@ -207,7 +284,7 @@ body{background:#0a0a0a;color:#fff;font-family:'Segoe UI',Tahoma,sans-serif;over
 
 <!-- RESULT -->
 <div class="overlay hidden" id="olResult">
-<div class="settings-panel result-panel" style="max-width:450px">
+<div class="settings-panel result-panel" style="max-width:480px">
 <h2 id="resTitle">CLEAR</h2>
 <div class="result-stats">
 <div class="result-stat"><div class="rl">최대 콤보</div><div class="rv combo" id="rCmb">0</div></div>
@@ -218,31 +295,64 @@ body{background:#0a0a0a;color:#fff;font-family:'Segoe UI',Tahoma,sans-serif;over
 <div class="result-stat"><div class="rl">PPS</div><div class="rv pps" id="rPps">0</div></div>
 <div class="result-stat"><div class="rl">올클리어</div><div class="rv allclear" id="rAc">0</div></div>
 <div class="result-stat"><div class="rl">스핀</div><div class="rv" style="color:#ff6644" id="rSpn">0</div></div>
+<div class="result-stat"><div class="rl">받은 가비지</div><div class="rv" style="color:#ff4444" id="rGarbage">0</div></div>
+<div class="result-stat"><div class="rl">보낸 반격</div><div class="rv" style="color:#44ff44" id="rCounter">0</div></div>
 </div>
 <button class="btn btn-go" onclick="menuRestart()">다시하기</button>
 <button class="btn btn-sub" onclick="toMenu()">메뉴로</button>
 </div></div>
 
-<!-- GAME -->
+<!-- GAME AREA -->
 <div class="game-container" id="gameArea" style="display:none">
+
 <div class="side-panel-left">
   <div class="hold-box"><h3>HOLD</h3><canvas id="hCvs" width="100" height="60"></canvas></div>
   <div class="stats-panel">
     <div class="stat-item"><div class="stat-label">Combo</div><div class="stat-value combo" id="uCmb">0</div></div>
     <div class="stat-item"><div class="stat-label">Max Combo</div><div class="stat-value max-combo" id="uMCmb">0</div></div>
     <div class="stat-item"><div class="stat-label">Score</div><div class="stat-value score" id="uScr">0</div></div>
+    <div class="stat-item"><div class="stat-label">Garbage In</div><div class="stat-value" style="color:#ff4444;font-size:20px" id="uGarbage">0</div></div>
   </div>
 </div>
+
+<!-- PLAYER BOARD -->
 <div class="board-wrapper" id="brdWrap">
   <div id="board-container">
     <canvas id="gCvs"></canvas>
     <div class="reset-overlay"><div class="reset-bar" id="rstBar"></div></div>
     <div class="grav-indicator" id="gravInd"></div>
+    <div class="gb-edge-bar" id="gbEdge"></div>
+    <div class="attack-popup" id="atkPopup"></div>
   </div>
   <div class="ac-text" id="acTxt">ALL CLEAR</div>
   <div class="zflash" id="zFlash"></div>
   <div id="actTexts" style="position:absolute;right:100%;top:0;width:180px;height:100%;pointer-events:none;overflow:visible"></div>
 </div>
+
+<!-- OPPONENT PANEL -->
+<div class="opponent-section" id="oppSection" style="display:none">
+  <div class="opp-title">OPPONENT</div>
+  <div class="diff-badge" id="diffBadge">—</div>
+
+  <div class="garbage-queue">
+    <div class="gq-label">⚠ INCOMING</div>
+    <div class="garbage-bar-wrap"><div class="garbage-bar-fill" id="gbBarFill" style="width:0%"></div></div>
+    <div class="garbage-count" id="gbCount">0</div>
+  </div>
+
+  <div class="opp-board-frame" id="oppBoardFrame">
+    <canvas id="oCvs"></canvas>
+    <div class="garbage-flash" id="gbFlash"></div>
+  </div>
+
+  <div class="opp-stats">
+    <div class="opp-stat"><span class="ol">COMBO</span><span class="ov" id="oCombo">0</span></div>
+    <div class="opp-stat"><span class="ol">SENT</span><span class="ov" style="color:#ff6600" id="oSent">0</span></div>
+    <div class="opp-stat"><span class="ol">COUNTERED</span><span class="ov" style="color:#44ff44" id="oCounted">0</span></div>
+  </div>
+</div>
+
+<!-- RIGHT PANEL -->
 <div class="side-panel-right">
   <div class="next-box"><h3>NEXT</h3><canvas id="nCvs" width="100" height="380"></canvas></div>
   <div class="stats-panel">
@@ -255,29 +365,74 @@ body{background:#0a0a0a;color:#fff;font-family:'Segoe UI',Tahoma,sans-serif;over
 </div>
 
 <script>
+// ══════════════════════════════════
+// TETROMINO DATA
+// ══════════════════════════════════
 const SH={I:[[[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]],[[0,0,1,0],[0,0,1,0],[0,0,1,0],[0,0,1,0]],[[0,0,0,0],[0,0,0,0],[1,1,1,1],[0,0,0,0]],[[0,1,0,0],[0,1,0,0],[0,1,0,0],[0,1,0,0]]],O:[[[1,1],[1,1]],[[1,1],[1,1]],[[1,1],[1,1]],[[1,1],[1,1]]],T:[[[0,1,0],[1,1,1],[0,0,0]],[[0,1,0],[0,1,1],[0,1,0]],[[0,0,0],[1,1,1],[0,1,0]],[[0,1,0],[1,1,0],[0,1,0]]],S:[[[0,1,1],[1,1,0],[0,0,0]],[[0,1,0],[0,1,1],[0,0,1]],[[0,0,0],[0,1,1],[1,1,0]],[[1,0,0],[1,1,0],[0,1,0]]],Z:[[[1,1,0],[0,1,1],[0,0,0]],[[0,0,1],[0,1,1],[0,1,0]],[[0,0,0],[1,1,0],[0,1,1]],[[0,1,0],[1,1,0],[1,0,0]]],J:[[[1,0,0],[1,1,1],[0,0,0]],[[0,1,1],[0,1,0],[0,1,0]],[[0,0,0],[1,1,1],[0,0,1]],[[0,1,0],[0,1,0],[1,1,0]]],L:[[[0,0,1],[1,1,1],[0,0,0]],[[0,1,0],[0,1,0],[0,1,1]],[[0,0,0],[1,1,1],[1,0,0]],[[1,1,0],[0,1,0],[0,1,0]]]};
 const COL={I:'#31c7ef',O:'#e6d04a',T:'#ad4fc6',S:'#5ab129',Z:'#ef2029',J:'#5c65c2',L:'#ef7921'};
 const KJ={'0>1':[[0,0],[-1,0],[-1,1],[0,-2],[-1,-2]],'1>0':[[0,0],[1,0],[1,-1],[0,2],[1,2]],'1>2':[[0,0],[1,0],[1,-1],[0,2],[1,2]],'2>1':[[0,0],[-1,0],[-1,1],[0,-2],[-1,-2]],'2>3':[[0,0],[1,0],[1,1],[0,-2],[1,-2]],'3>2':[[0,0],[-1,0],[-1,-1],[0,2],[-1,2]],'3>0':[[0,0],[-1,0],[-1,-1],[0,2],[-1,2]],'0>3':[[0,0],[1,0],[1,1],[0,-2],[1,-2]]};
 const KI={'0>1':[[0,0],[-2,0],[1,0],[-2,-1],[1,2]],'1>0':[[0,0],[2,0],[-1,0],[2,1],[-1,-2]],'1>2':[[0,0],[-1,0],[2,0],[-1,2],[2,-1]],'2>1':[[0,0],[1,0],[-2,0],[1,-2],[-2,1]],'2>3':[[0,0],[2,0],[-1,0],[2,1],[-1,-2]],'3>2':[[0,0],[-2,0],[1,0],[-2,-1],[1,2]],'3>0':[[0,0],[1,0],[-2,0],[1,-2],[-2,1]],'0>3':[[0,0],[-1,0],[2,0],[-1,2],[2,-1]]};
 const K180J={'0>2':[[0,0],[0,1],[1,1],[-1,1],[1,0],[-1,0]],'1>3':[[0,0],[1,0],[1,2],[1,1],[0,2],[0,1]],'2>0':[[0,0],[0,-1],[-1,-1],[1,-1],[-1,0],[1,0]],'3>1':[[0,0],[-1,0],[-1,2],[-1,1],[0,2],[0,1]]};
 const K180I={'0>2':[[0,0],[0,1]],'1>3':[[0,0],[1,0]],'2>0':[[0,0],[0,-1]],'3>1':[[0,0],[-1,0]]};
+
 const W=4,H=26,VIS=22,SE=2,DR=VIS+SE,BUF=H-VIS,CS=25,DS=BUF-SE;
-const DEF={ghost:true,grid:true,grav:1000,lockDly:500,nxtN:5,rng:'7bag',das:100,arr:0,sdf:41,gravUp:false,gravInt:30,gravAmt:50,gravMin:50,keys:{left:'ArrowLeft',right:'ArrowRight',sd:'ArrowDown',hd:' ',cw:'ArrowUp',ccw:'z',r180:'a',hold:'c',rst:'r'},goals:{cmb:{on:false,v:20},lin:{on:false,v:100},tim:{on:false,v:120},scr:{on:false,v:10000}}};
+
+// ══════════════════════════════════
+// DIFFICULTY PRESETS
+// ══════════════════════════════════
+const DIFFS={
+  easy:  {minMs:3000,maxMs:5000,minL:1,maxL:1,restP:.35,restMs:4000,label:'EASY',  cls:'diff-easy'  },
+  normal:{minMs:2000,maxMs:3000,minL:1,maxL:2,restP:.15,restMs:2000,label:'NORMAL',cls:'diff-normal'},
+  hard:  {minMs:1000,maxMs:2000,minL:2,maxL:3,restP:.05,restMs:1000,label:'HARD',  cls:'diff-hard'  },
+  insane:{minMs:500, maxMs:1000,minL:3,maxL:4,restP:0,  restMs:0,   label:'INSANE',cls:'diff-insane'},
+};
+
+// ══════════════════════════════════
+// CONFIG
+// ══════════════════════════════════
+const DEF={ghost:true,grid:true,grav:1000,lockDly:500,nxtN:5,rng:'7bag',das:100,arr:0,sdf:41,
+  gravUp:false,gravInt:30,gravAmt:50,gravMin:50,
+  keys:{left:'ArrowLeft',right:'ArrowRight',sd:'ArrowDown',hd:' ',cw:'ArrowUp',ccw:'z',r180:'a',hold:'c',rst:'r'},
+  goals:{cmb:{on:false,v:20},lin:{on:false,v:100},tim:{on:false,v:120},scr:{on:false,v:10000}},
+  opp:{on:false,diff:'normal'}};
 let C=JSON.parse(JSON.stringify(DEF));
+
+// ══════════════════════════════════
+// PLAYER STATE
+// ══════════════════════════════════
 let brd,cp,holdT,holdUsed,nxt,bag,on=false,pau=false;
 let cmb,mCmb,scr,lin,acCnt,spnCnt,pcCnt,t0,elapsed,pAcc,pT0;
-let lockTm,lkMoves,wasRot,wasSpin,cmbTm;
+let lockTm,lkMoves,wasRot,wasSpin;
 let kd={},dirPress={left:0,right:0},dirDasOk={left:false,right:false},dirLastArr={left:0,right:0};
 let sdHeld=false,sdLastT=0,anim,resetting=false,evtY=0,gravAccum=0,lastFrameT=0,curGrav=1000;
-let settingsFrom='menu'; // 'menu' or 'pause'
+let settingsFrom='menu';
+let totalGbIn=0,totalCounterOut=0;
 
-function $(id){return document.getElementById(id);}
+// ══════════════════════════════════
+// OPPONENT STATE
+// ══════════════════════════════════
+const OW=4,OH=20,OCS=16;
+let oppBrd=[];
+let oppCombo=0,oppSent=0,oppCountered=0;
+let oppTimer=null,oppRunning=false;
+let garbageQueue=0;    // lines pending insertion
+let gbFlushTimer=null;
 
+// ══════════════════════════════════
+// UTIL
+// ══════════════════════════════════
+function $(i){return document.getElementById(i);}
+function ri(a,b){return Math.floor(Math.random()*(b-a+1))+a;}
+function rf(a,b){return a+Math.random()*(b-a);}
+
+// ══════════════════════════════════
+// SLIDER INIT
+// ══════════════════════════════════
 function initSliders(){
   [['sGrav','vGrav',v=>v+'ms'],['sLock','vLock',v=>v+'ms'],['sNext','vNext',v=>v],
    ['sDas','vDas',v=>v+'ms'],['sArr','vArr',v=>v+'ms'],['sSdf','vSdf',v=>v>=41?'INF':'x'+v],
-   ['sGravInt','vGravInt',v=>v+'\uCD08'],['sGravAmt','vGravAmt',v=>v+'ms'],['sGravMin','vGravMin',v=>v+'ms'],
-   ['gCmbV','vGCmb',v=>v],['gLinV','vGLin',v=>v],['gTimV','vGTim',v=>v+'\uCD08'],
+   ['sGravInt','vGravInt',v=>v+'초'],['sGravAmt','vGravAmt',v=>v+'ms'],['sGravMin','vGravMin',v=>v+'ms'],
+   ['gCmbV','vGCmb',v=>v],['gLinV','vGLin',v=>v],['gTimV','vGTim',v=>v+'초'],
    ['gScrV','vGScr',v=>Number(v).toLocaleString()]
   ].forEach(([s,v,f])=>{const sl=$(s),vl=$(v);if(sl&&vl)sl.oninput=()=>vl.textContent=f(+sl.value);});
 }
@@ -287,32 +442,31 @@ function init(){
   document.querySelectorAll('.tab-btn').forEach(b=>b.onclick=()=>{
     document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');$(b.dataset.tab).classList.add('active');});
+    b.classList.add('active');$(b.dataset.tab).classList.add('active');
+  });
   document.querySelectorAll('.kbtn').forEach(b=>{b.onclick=function(){
     if(this.classList.contains('listening')){this.classList.remove('listening');return;}
     document.querySelectorAll('.kbtn').forEach(x=>x.classList.remove('listening'));
     this.classList.add('listening');const a=this.dataset.a;
     const fn=e=>{e.preventDefault();e.stopPropagation();C.keys[a]=e.key;this.textContent=fk(e.key);
       this.classList.remove('listening');document.removeEventListener('keydown',fn,true);};
-    document.addEventListener('keydown',fn,true);};});
-  document.addEventListener('keydown',onKD);document.addEventListener('keyup',onKU);
+    document.addEventListener('keydown',fn,true);
+  };});
+  document.addEventListener('keydown',onKD);
+  document.addEventListener('keyup',onKU);
   window.addEventListener('blur',()=>{kd={};dirPress={left:0,right:0};sdHeld=false;});
 }
 
-function fk(k){return{' ':'Space',ArrowLeft:'\u2190',ArrowRight:'\u2192',ArrowUp:'\u2191',ArrowDown:'\u2193'}[k]||(k.length===1?k.toUpperCase():k);}
+function fk(k){return{' ':'Space',ArrowLeft:'←',ArrowRight:'→',ArrowUp:'↑',ArrowDown:'↓'}[k]||(k.length===1?k.toUpperCase():k);}
 function rstKeys(){C.keys=JSON.parse(JSON.stringify(DEF.keys));updUI();}
 function resetAllSettings(){C=JSON.parse(JSON.stringify(DEF));localStorage.removeItem('4wt');updUI();toast('기본값으로 초기화되었습니다');}
 
-// ===== MENU NAVIGATION =====
+// ══════════════════════════════════
+// MENU
+// ══════════════════════════════════
 function openSettings(){settingsFrom='menu';rdUI();$('olMain').classList.add('hidden');$('olSettings').classList.remove('hidden');}
 function openSettingsInGame(){settingsFrom='pause';rdUI();$('olPause').classList.add('hidden');$('olSettings').classList.remove('hidden');}
-function closeSettings(){
-  rdUI();saveS();
-  $('olSettings').classList.add('hidden');
-  if(settingsFrom==='pause')$('olPause').classList.remove('hidden');
-  else $('olMain').classList.remove('hidden');
-}
-
+function closeSettings(){rdUI();saveS();$('olSettings').classList.add('hidden');if(settingsFrom==='pause')$('olPause').classList.remove('hidden');else $('olMain').classList.remove('hidden');}
 function rdUI(){
   C.ghost=$('sGhost').value==='1';C.grid=$('sGrid').value==='1';C.rng=$('sRng').value;
   C.grav=+$('sGrav').value||1000;C.lockDly=+$('sLock').value||500;C.nxtN=+$('sNext').value||5;
@@ -322,6 +476,7 @@ function rdUI(){
   C.goals.lin.on=$('gLinOn').checked;C.goals.lin.v=+$('gLinV').value||100;
   C.goals.tim.on=$('gTimOn').checked;C.goals.tim.v=+$('gTimV').value||120;
   C.goals.scr.on=$('gScrOn').checked;C.goals.scr.v=+$('gScrV').value||10000;
+  C.opp.on=$('sOppOn').value==='1';C.opp.diff=$('sOppDiff').value;
 }
 function updUI(){
   $('sGhost').value=C.ghost?'1':'0';$('sGrid').value=C.grid?'1':'0';$('sRng').value=C.rng;
@@ -332,41 +487,64 @@ function updUI(){
   $('gLinOn').checked=C.goals.lin.on;$('gLinV').value=C.goals.lin.v;
   $('gTimOn').checked=C.goals.tim.on;$('gTimV').value=C.goals.tim.v;
   $('gScrOn').checked=C.goals.scr.on;$('gScrV').value=C.goals.scr.v;
+  $('sOppOn').value=C.opp.on?'1':'0';$('sOppDiff').value=C.opp.diff;
   document.querySelectorAll('.kbtn').forEach(b=>{if(C.keys[b.dataset.a])b.textContent=fk(C.keys[b.dataset.a]);});
   $('vGrav').textContent=C.grav+'ms';$('vLock').textContent=C.lockDly+'ms';$('vNext').textContent=C.nxtN;
   $('vDas').textContent=C.das+'ms';$('vArr').textContent=C.arr+'ms';$('vSdf').textContent=C.sdf>=41?'INF':'x'+C.sdf;
-  $('vGravInt').textContent=C.gravInt+'\uCD08';$('vGravAmt').textContent=C.gravAmt+'ms';$('vGravMin').textContent=C.gravMin+'ms';
-  $('vGCmb').textContent=C.goals.cmb.v;$('vGLin').textContent=C.goals.lin.v;
-  $('vGTim').textContent=C.goals.tim.v+'\uCD08';$('vGScr').textContent=C.goals.scr.v.toLocaleString();
+  $('vGravInt').textContent=C.gravInt+'초';$('vGravAmt').textContent=C.gravAmt+'ms';$('vGravMin').textContent=C.gravMin+'ms';
+  $('vGCmb').textContent=C.goals.cmb.v;$('vGLin').textContent=C.goals.lin.v;$('vGTim').textContent=C.goals.tim.v+'초';$('vGScr').textContent=C.goals.scr.v.toLocaleString();
 }
 function saveS(){rdUI();localStorage.setItem('4wt',JSON.stringify(C));toast('설정 저장됨');}
 function loadC(){try{const d=JSON.parse(localStorage.getItem('4wt'));if(d){
-  for(let k in d)if(k!=='keys'&&k!=='goals')C[k]=d[k];
+  for(let k in d)if(k!=='keys'&&k!=='goals'&&k!=='opp')C[k]=d[k];
   if(d.keys)for(let k in d.keys)C.keys[k]=d.keys[k];
-  if(d.goals)for(let k in d.goals)if(C.goals[k])Object.assign(C.goals[k],d.goals[k]);}}catch(e){}}
+  if(d.goals)for(let k in d.goals)if(C.goals[k])Object.assign(C.goals[k],d.goals[k]);
+  if(d.opp)Object.assign(C.opp,d.opp);}}catch(e){}}
 function toast(m){const e=document.createElement('div');e.style.cssText='position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:12px 24px;border-radius:8px;z-index:999;font-size:14px;';e.textContent=m;document.body.appendChild(e);setTimeout(()=>{e.style.transition='opacity .5s';e.style.opacity='0';setTimeout(()=>e.remove(),500);},1500);}
 
-// ===== GAME =====
+// ══════════════════════════════════
+// GAME INIT
+// ══════════════════════════════════
 function startGame(){
   rdUI();saveS();
   const cv=$('gCvs');cv.width=W*CS;cv.height=DR*CS;
   $('board-container').style.width=cv.width+'px';$('board-container').style.height=cv.height+'px';
+  // opponent canvas
+  const oc=$('oCvs');oc.width=OW*OCS;oc.height=OH*OCS;
+  $('oppBoardFrame').style.width=oc.width+'px';$('oppBoardFrame').style.height=oc.height+'px';
   $('olMain').classList.add('hidden');$('olSettings').classList.add('hidden');$('gameArea').style.display='flex';
-  resetG();doCd(()=>{on=true;t0=performance.now();pAcc=0;gravAccum=0;lastFrameT=performance.now();curGrav=C.grav;spawn();loop();});
+  resetG();
+  if(C.opp.on){
+    $('oppSection').style.display='flex';
+    const p=DIFFS[C.opp.diff];
+    const b=$('diffBadge');b.className='diff-badge '+p.cls;b.textContent=p.label;
+  }else{$('oppSection').style.display='none';}
+  doCd(()=>{on=true;t0=performance.now();pAcc=0;gravAccum=0;lastFrameT=performance.now();curGrav=C.grav;spawn();loop();if(C.opp.on)startOpp();});
 }
+
 function resetG(){
   brd=[];for(let i=0;i<H;i++)brd.push(new Array(W).fill(0));
   cp=null;holdT=null;holdUsed=false;nxt=[];bag=[];
   cmb=0;mCmb=0;scr=0;lin=0;acCnt=0;spnCnt=0;pcCnt=0;elapsed=0;
+  totalGbIn=0;totalCounterOut=0;
   wasRot=false;wasSpin=false;lkMoves=0;evtY=0;gravAccum=0;lastFrameT=0;curGrav=C.grav;
   kd={};dirPress={left:0,right:0};dirDasOk={left:false,right:false};dirLastArr={left:0,right:0};sdHeld=false;resetting=false;
-  clrTm();fillQ();updSt();const at=$('actTexts');while(at.firstChild)at.removeChild(at.firstChild);
+  clrTm();fillQ();updSt();
+  const at=$('actTexts');while(at.firstChild)at.removeChild(at.firstChild);
+  stopOpp();
+  initOppBoard();
+  garbageQueue=0;updGbUI();
 }
-function clrTm(){if(lockTm)clearTimeout(lockTm);lockTm=null;if(anim)cancelAnimationFrame(anim);anim=null;if(cmbTm)clearTimeout(cmbTm);cmbTm=null;}
-function doCd(cb){let n=3;const mk=t=>{const e=document.createElement('div');e.className='cd';e.textContent=t;document.body.appendChild(e);return e;};let el=mk(n);const iv=setInterval(()=>{el.remove();n--;if(n>0)el=mk(n);else{clearInterval(iv);el=mk('GO!');el.style.fontSize='80px';setTimeout(()=>el.remove(),400);cb();}},600);}
-function doResetAnim(cb){if(resetting)return;resetting=true;on=false;clrTm();const bar=$('rstBar'),th=DR*CS,t1=performance.now();function fill(now){const p=Math.min(1,(now-t1)/250);bar.style.height=(p*th)+'px';if(p<1)requestAnimationFrame(fill);else setTimeout(()=>{resetG();render();const t2=performance.now();function rev(n2){const p2=Math.min(1,(n2-t2)/180);bar.style.height=((1-p2)*th)+'px';if(p2<1)requestAnimationFrame(rev);else{bar.style.height='0';resetting=false;cb();}}requestAnimationFrame(rev);},60);}requestAnimationFrame(fill);}
+
+function clrTm(){if(lockTm)clearTimeout(lockTm);lockTm=null;if(anim)cancelAnimationFrame(anim);anim=null;}
 function fillQ(){while(nxt.length<12){if(!bag.length)bag=mkBag();nxt.push(bag.shift());}}
 function mkBag(){const t=['I','O','T','S','Z','J','L'];if(C.rng==='rnd')return[t[Math.random()*7|0]];let b=[...t];if(C.rng==='14bag')b=[...t,...t];for(let i=b.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[b[i],b[j]]=[b[j],b[i]];}return b;}
+function doCd(cb){let n=3;const mk=t=>{const e=document.createElement('div');e.className='cd';e.textContent=t;document.body.appendChild(e);return e;};let el=mk(n);const iv=setInterval(()=>{el.remove();n--;if(n>0)el=mk(n);else{clearInterval(iv);el=mk('GO!');el.style.fontSize='80px';setTimeout(()=>el.remove(),400);cb();}},600);}
+function doResetAnim(cb){if(resetting)return;resetting=true;on=false;clrTm();const bar=$('rstBar'),th=DR*CS,t1=performance.now();function fill(now){const p=Math.min(1,(now-t1)/250);bar.style.height=(p*th)+'px';if(p<1)requestAnimationFrame(fill);else setTimeout(()=>{resetG();render();const t2=performance.now();function rev(n2){const p2=Math.min(1,(n2-t2)/180);bar.style.height=((1-p2)*th)+'px';if(p2<1)requestAnimationFrame(rev);else{bar.style.height='0';resetting=false;cb();}}requestAnimationFrame(rev);},60);}requestAnimationFrame(fill);}
+
+// ══════════════════════════════════
+// PLAYER PIECE LOGIC (unchanged from original)
+// ══════════════════════════════════
 function spawn(){fillQ();const type=nxt.shift();fillQ();const sh=SH[type][0],px=Math.floor((W-sh[0].length)/2);let py=DS;cp={type,rot:0,x:px,y:py};if(!ok(sh,px,py)){py--;cp.y=py;if(!ok(sh,px,py)){die();return;}}holdUsed=false;wasRot=false;wasSpin=false;lkMoves=0;gravAccum=0;rstLock();}
 function gs(){return SH[cp.type][cp.rot];}
 function ok(sh,px,py){for(let r=0;r<sh.length;r++)for(let c=0;c<sh[r].length;c++){if(!sh[r][c])continue;const bx=px+c,by=py+r;if(bx<0||bx>=W||by<0||by>=H)return false;if(brd[by][bx])return false;}return true;}
@@ -378,36 +556,348 @@ function hdrop(){if(!cp||!on||pau)return;let d=0;while(ok(gs(),cp.x,cp.y+1)){cp.
 function sdrop(){if(!cp||!on||pau)return;if(C.sdf>=41){while(ok(gs(),cp.x,cp.y+1)){cp.y++;scr++;}if(grnd())rstLock();}else{if(mv(0,1))scr++;}}
 function ghostY(){if(!cp)return 0;let gy=cp.y;while(ok(gs(),cp.x,gy+1))gy++;return gy;}
 function rstLock(){if(lockTm)clearTimeout(lockTm);lockTm=null;if(lkMoves>=15){lock();return;}if(grnd())lockTm=setTimeout(()=>{if(cp&&grnd())lock();},C.lockDly);}
-function lock(){if(!cp)return;if(lockTm){clearTimeout(lockTm);lockTm=null;}const sh=gs();for(let r=0;r<sh.length;r++)for(let c=0;c<sh[r].length;c++){if(!sh[r][c])continue;const bx=cp.x+c,by=cp.y+r;if(by>=0&&by<H&&bx>=0&&bx<W)brd[by][bx]=cp.type;}const didSpin=wasSpin&&wasRot,sType=didSpin?cp.type:null;pcCnt++;cp=null;let fr=[];for(let r=0;r<H;r++){let full=true;for(let c=0;c<W;c++){if(!brd[r][c]){full=false;break;}}if(full)fr.push(r);}fr.sort((a,b)=>b-a);for(const r of fr)brd.splice(r,1);for(let i=0;i<fr.length;i++)brd.unshift(new Array(W).fill(0));doScore(fr.length,didSpin,sType);for(let r=0;r<DS;r++)for(let c=0;c<W;c++){if(brd[r][c]){die();return;}}if(chkGoal()){win();return;}spawn();}
-function doScore(cl,spin,sType){if(cl>0){cmb++;lin+=cl;const empty=brd.every(r=>r.every(c=>!c));let base=spin?[0,800,1200,1600,800][cl]:[0,100,300,500,800][cl];scr+=base+50*cmb;if(empty){acCnt++;scr+=3500;showAC();}if(spin){spnCnt++;const nm=sType==='T'?'T-SPIN':(sType+'-SPIN');showEv(nm+' '+['','SINGLE','DOUBLE','TRIPLE','QUAD'][cl],'#ff6644');doFlash('spfl');}else if(cl===4)showEv('QUAD','#44aaff');else if(cl>=2)showEv(['','SINGLE','DOUBLE','TRIPLE'][cl],'#44ff44');if(cmb>mCmb)mCmb=cmb;showEv(cmb+' COMBO','#ffaa00');}else{if(cmb>0)showEv(cmb+' COMBO END','#ff4444');cmb=0;}updSt();}
-function showAC(){const el=$('acTxt');el.classList.remove('active');void el.offsetWidth;el.classList.add('active');setTimeout(()=>el.classList.remove('active'),2200);}
-function showEv(txt,col){const box=$('actTexts'),e=document.createElement('div');e.className='action-text';e.textContent=txt;e.style.color=col;evtY+=26;if(evtY>DR*CS-30)evtY=10;e.style.top=evtY+'px';box.appendChild(e);setTimeout(()=>e.remove(),1500);}
-function doFlash(cls){const e=$('zFlash');e.className='zflash '+cls;setTimeout(()=>e.className='zflash',1000);}
-function doHold(){if(!cp||holdUsed||!on||pau)return;if(lockTm){clearTimeout(lockTm);lockTm=null;}const t=cp.type;if(holdT){const sw=holdT;holdT=t;const sh=SH[sw][0];cp={type:sw,rot:0,x:Math.floor((W-sh[0].length)/2),y:DS};if(!ok(sh,cp.x,cp.y)){die();return;}}else{holdT=t;spawn();return;}holdUsed=true;wasRot=false;wasSpin=false;lkMoves=0;gravAccum=0;}
 
-function onKD(e){if(document.querySelector('.kbtn.listening'))return;const k=e.key;if(Object.values(C.keys).includes(k))e.preventDefault();if(k==='Escape'){if(on&&!pau)doPause();else if(pau)unpause();return;}if(k===C.keys.rst&&(on||resetting)){if(!resetting)doResetAnim(()=>{on=true;t0=performance.now();pAcc=0;gravAccum=0;lastFrameT=performance.now();curGrav=C.grav;spawn();loop();});return;}if(!on||pau)return;if(kd[k])return;kd[k]=true;const now=performance.now();if(k===C.keys.left){dirPress.left=now;dirDasOk.left=false;dirLastArr.left=0;mv(-1,0);}else if(k===C.keys.right){dirPress.right=now;dirDasOk.right=false;dirLastArr.right=0;mv(1,0);}else if(k===C.keys.sd){sdHeld=true;sdLastT=now;sdrop();}else if(k===C.keys.hd)hdrop();else if(k===C.keys.cw)rot(1);else if(k===C.keys.ccw)rot(-1);else if(k===C.keys.r180)rot(2);else if(k===C.keys.hold)doHold();}
+function lock(){
+  if(!cp)return;
+  if(lockTm){clearTimeout(lockTm);lockTm=null;}
+  const sh=gs();
+  for(let r=0;r<sh.length;r++)for(let c=0;c<sh[r].length;c++){if(!sh[r][c])continue;const bx=cp.x+c,by=cp.y+r;if(by>=0&&by<H&&bx>=0&&bx<W)brd[by][bx]=cp.type;}
+  const didSpin=wasSpin&&wasRot,sType=didSpin?cp.type:null;
+  pcCnt++;cp=null;
+  let fr=[];
+  for(let r=0;r<H;r++){let full=true;for(let c=0;c<W;c++){if(!brd[r][c]){full=false;break;}}if(full)fr.push(r);}
+  fr.sort((a,b)=>b-a);
+  for(const r of fr)brd.splice(r,1);
+  for(let i=0;i<fr.length;i++)brd.unshift(new Array(W).fill(0));
+  doScore(fr.length,didSpin,sType);
+  for(let r=0;r<DS;r++)for(let c=0;c<W;c++){if(brd[r][c]){die();return;}}
+  if(chkGoal()){win();return;}
+  // flush pending garbage only when player didn't clear
+  if(fr.length===0&&garbageQueue>0)flushGarbage();
+  spawn();
+}
+
+function doScore(cl,spin,sType){
+  if(cl>0){
+    cmb++;lin+=cl;
+    const empty=brd.every(r=>r.every(c=>!c));
+    let base=spin?[0,800,1200,1600,800][cl]:[0,100,300,500,800][cl];
+    scr+=base+50*cmb;
+    if(empty){acCnt++;scr+=3500;showAC();}
+    if(spin){spnCnt++;const nm=sType==='T'?'T-SPIN':(sType+'-SPIN');showEv(nm+' '+['','SINGLE','DOUBLE','TRIPLE','QUAD'][cl],'#ff6644');doFlash('spfl');}
+    else if(cl===4)showEv('QUAD','#44aaff');
+    else if(cl>=2)showEv(['','SINGLE','DOUBLE','TRIPLE'][cl],'#44ff44');
+    if(cmb>mCmb)mCmb=cmb;
+    showEv(cmb+' COMBO','#ffaa00');
+    // cancel incoming garbage first, then counter
+    if(C.opp.on){
+      const cancel=Math.min(garbageQueue,cl);
+      if(cancel>0){
+        garbageQueue-=cancel;
+        const leftover=cl-cancel;
+        if(leftover>0)sendCounter(leftover);
+        else showAtkPopup('-'+cancel+'⬆','#44ff44');
+      } else {
+        sendCounter(cl);
+      }
+      updGbUI();
+    }
+  } else {
+    if(cmb>0)showEv(cmb+' COMBO END','#ff4444');
+    cmb=0;
+  }
+  updSt();
+}
+
+// ══════════════════════════════════
+// GARBAGE SYSTEM
+// ══════════════════════════════════
+function receiveGarbage(lines){
+  garbageQueue+=lines;
+  totalGbIn+=lines;
+  updGbUI();
+  flashGbWarn();
+  // schedule flush with delay so player can counter
+  if(!gbFlushTimer){
+    gbFlushTimer=setTimeout(()=>{gbFlushTimer=null;if(garbageQueue>0&&on&&!pau)flushGarbage();},800);
+  }
+}
+
+function flushGarbage(){
+  // determine how many lines to actually push (cap at 8)
+  const push=Math.min(garbageQueue,8);
+  garbageQueue-=push;
+  // pick random hole column
+  const hole=ri(0,W-1);
+  for(let i=0;i<push;i++){
+    brd.shift(); // remove top row
+    const row=new Array(W).fill('G');
+    row[hole]=0; // the hole
+    brd.push(row);
+  }
+  updGbUI();
+  // check topout
+  for(let c=0;c<W;c++){if(brd[DS][c]){die();return;}}
+  // nudge active piece up if stuck
+  if(cp){while(!ok(gs(),cp.x,cp.y)&&cp.y>DS)cp.y--;}
+}
+
+function sendCounter(lines){
+  totalCounterOut+=lines;
+  oppCountered+=lines;
+  showAtkPopup('⚡+'+lines,'#44aaff');
+  // push lines onto opponent board
+  for(let i=0;i<lines;i++){
+    oppBrd.shift();
+    const row=new Array(OW).fill('C');
+    row[ri(0,OW-1)]=0;
+    oppBrd.push(row);
+  }
+  // if opponent topped, reset them
+  if(oppBrd.slice(0,3).some(r=>r.some(c=>c!==0)))resetOppBoard();
+  updOppSt();
+  renderOpp();
+}
+
+function flashGbWarn(){
+  // pulse the edge bar
+  const e=$('gbEdge');e.classList.remove('active');void e.offsetWidth;e.classList.add('active');
+  setTimeout(()=>e.classList.remove('active'),900);
+  // flash opp's attack visual
+  const f=$('gbFlash');f.classList.remove('on');void f.offsetWidth;f.classList.add('on');
+}
+
+function showAtkPopup(txt,col){
+  const p=$('atkPopup');
+  p.textContent=txt;p.style.color=col;
+  p.classList.remove('show');void p.offsetWidth;p.classList.add('show');
+}
+
+function updGbUI(){
+  const q=garbageQueue;
+  $('gbBarFill').style.width=Math.min(100,(q/16)*100)+'%';
+  $('gbCount').textContent=q;
+  $('gbCount').style.color=q>=8?'#ff1111':q>=4?'#ff6600':'#ff4444';
+  // color the bar
+  $('gbBarFill').style.background=q>=8?'linear-gradient(90deg,#ff0000,#ff3300)':
+    q>=4?'linear-gradient(90deg,#ff4400,#ff2222)':'linear-gradient(90deg,#ff6600,#ff4444)';
+}
+
+// ══════════════════════════════════
+// OPPONENT AI
+// ══════════════════════════════════
+function initOppBoard(){
+  oppBrd=[];oppCombo=0;oppSent=0;oppCountered=0;
+  for(let i=0;i<OH;i++)oppBrd.push(new Array(OW).fill(0));
+  // pre-fill lower portion to look mid-game
+  for(let r=Math.floor(OH*0.55);r<OH;r++)
+    for(let c=0;c<OW;c++)
+      if(Math.random()<0.65)oppBrd[r][c]='B';
+  renderOpp();updOppSt();
+}
+
+function resetOppBoard(){
+  for(let i=0;i<OH;i++)oppBrd[i]=new Array(OW).fill(0);
+  for(let r=Math.floor(OH*0.55);r<OH;r++)
+    for(let c=0;c<OW;c++)
+      if(Math.random()<0.6)oppBrd[r][c]='B';
+  oppCombo=0;showEv('상대 리셋!','#44ff44');renderOpp();updOppSt();
+}
+
+function startOpp(){oppRunning=true;schedOppAtk();}
+function stopOpp(){
+  oppRunning=false;
+  if(oppTimer){clearTimeout(oppTimer);oppTimer=null;}
+  if(gbFlushTimer){clearTimeout(gbFlushTimer);gbFlushTimer=null;}
+}
+
+function schedOppAtk(){
+  if(!oppRunning)return;
+  const p=DIFFS[C.opp.diff];
+  if(Math.random()<p.restP){
+    // rest phase: opponent board settles
+    oppCombo=0;
+    // animate: opponent drops a few blocks
+    animOppDrop();
+    updOppSt();renderOpp();
+    oppTimer=setTimeout(schedOppAtk,p.restMs);
+    return;
+  }
+  const delay=rf(p.minMs,p.maxMs);
+  oppTimer=setTimeout(()=>{
+    if(!oppRunning||!on)return;
+    doOppAtk();
+    schedOppAtk();
+  },delay);
+}
+
+function doOppAtk(){
+  const p=DIFFS[C.opp.diff];
+  const lines=ri(p.minL,p.maxL);
+  oppCombo++;oppSent+=lines;
+  // animate: opponent clears lines from their board
+  animOppClear(lines);
+  // send with travel delay
+  setTimeout(()=>{if(oppRunning&&on)receiveGarbage(lines);},350);
+  updOppSt();
+}
+
+function animOppClear(lines){
+  // flash clear: remove bottom rows, shift down
+  for(let i=0;i<lines;i++){
+    oppBrd.pop();
+    oppBrd.unshift(new Array(OW).fill(0));
+  }
+  // add some randomness to make it look active
+  animOppDrop();
+  renderOpp();
+}
+
+function animOppDrop(){
+  // sprinkle a few blocks in the middle area to show "piece activity"
+  const count=ri(1,3);
+  for(let i=0;i<count;i++){
+    const r=ri(Math.floor(OH*0.3),OH-2);
+    const c=ri(0,OW-1);
+    if(!oppBrd[r][c])oppBrd[r][c]='A';
+  }
+}
+
+// ══════════════════════════════════
+// OPPONENT RENDER
+// ══════════════════════════════════
+const OCOL={
+  B:'#2a2a3a', // base blocks
+  A:'#3a3a5a', // active drop blocks  
+  C:'#1a4a2a', // counter (green)
+  G:'#4a2a1a', // garbage sent
+};
+
+function renderOpp(){
+  const cv=$('oCvs');if(!cv)return;
+  const cx=cv.getContext('2d');
+  cx.fillStyle='#080810';cx.fillRect(0,0,cv.width,cv.height);
+  // grid
+  cx.strokeStyle='#111';cx.lineWidth=1;
+  for(let r=0;r<=OH;r++){cx.beginPath();cx.moveTo(0,r*OCS);cx.lineTo(OW*OCS,r*OCS);cx.stroke();}
+  for(let c=0;c<=OW;c++){cx.beginPath();cx.moveTo(c*OCS,0);cx.lineTo(c*OCS,OH*OCS);cx.stroke();}
+  // cells
+  for(let r=0;r<OH;r++){
+    for(let c=0;c<OW;c++){
+      const v=oppBrd[r][c];if(!v)continue;
+      cx.fillStyle=OCOL[v]||'#3a3a5a';
+      cx.fillRect(c*OCS+1,r*OCS+1,OCS-2,OCS-2);
+      cx.fillStyle='rgba(255,255,255,.07)';
+      cx.fillRect(c*OCS+1,r*OCS+1,OCS-2,2);
+    }
+  }
+  // pending garbage overlay on opp board (shows what's queued)
+  if(garbageQueue>0){
+    const shown=Math.min(garbageQueue,OH);
+    for(let i=0;i<shown;i++){
+      const y=(OH-1-i)*OCS;
+      const alpha=0.08+i*0.025;
+      cx.fillStyle=`rgba(255,80,0,${Math.min(alpha,0.35)})`;
+      cx.fillRect(0,y,OW*OCS,OCS);
+    }
+    // draw a bright indicator line
+    const topY=(OH-shown)*OCS;
+    cx.strokeStyle='rgba(255,100,0,.7)';cx.lineWidth=2;
+    cx.beginPath();cx.moveTo(0,topY);cx.lineTo(OW*OCS,topY);cx.stroke();
+  }
+}
+
+function updOppSt(){
+  $('oCombo').textContent=oppCombo;
+  $('oSent').textContent=oppSent;
+  $('oCounted').textContent=oppCountered;
+}
+
+// ══════════════════════════════════
+// HOLD / INPUT / PAUSE (unchanged)
+// ══════════════════════════════════
+function doHold(){if(!cp||holdUsed||!on||pau)return;if(lockTm){clearTimeout(lockTm);lockTm=null;}const t=cp.type;if(holdT){const sw=holdT;holdT=t;const sh=SH[sw][0];cp={type:sw,rot:0,x:Math.floor((W-sh[0].length)/2),y:DS};if(!ok(sh,cp.x,cp.y)){die();return;}}else{holdT=t;spawn();return;}holdUsed=true;wasRot=false;wasSpin=false;lkMoves=0;gravAccum=0;}
+function onKD(e){if(document.querySelector('.kbtn.listening'))return;const k=e.key;if(Object.values(C.keys).includes(k))e.preventDefault();if(k==='Escape'){if(on&&!pau)doPause();else if(pau)unpause();return;}if(k===C.keys.rst&&(on||resetting)){if(!resetting)doResetAnim(()=>{on=true;t0=performance.now();pAcc=0;gravAccum=0;lastFrameT=performance.now();curGrav=C.grav;spawn();loop();if(C.opp.on)startOpp();});return;}if(!on||pau)return;if(kd[k])return;kd[k]=true;const now=performance.now();if(k===C.keys.left){dirPress.left=now;dirDasOk.left=false;dirLastArr.left=0;mv(-1,0);}else if(k===C.keys.right){dirPress.right=now;dirDasOk.right=false;dirLastArr.right=0;mv(1,0);}else if(k===C.keys.sd){sdHeld=true;sdLastT=now;sdrop();}else if(k===C.keys.hd)hdrop();else if(k===C.keys.cw)rot(1);else if(k===C.keys.ccw)rot(-1);else if(k===C.keys.r180)rot(2);else if(k===C.keys.hold)doHold();}
 function onKU(e){const k=e.key;kd[k]=false;if(k===C.keys.left){dirPress.left=0;dirDasOk.left=false;}if(k===C.keys.right){dirPress.right=0;dirDasOk.right=false;}if(k===C.keys.sd)sdHeld=false;}
 function processInput(now){if(!cp||!on||pau)return;let dirs=[];if(dirPress.left)dirs.push({d:'left',dx:-1,t:dirPress.left});if(dirPress.right)dirs.push({d:'right',dx:1,t:dirPress.right});if(dirs.length===2){dirs.sort((a,b)=>b.t-a.t);dirs=[dirs[0]];}for(const{d,dx,t}of dirs){if(!dirDasOk[d]){if(now-t>=C.das){dirDasOk[d]=true;dirLastArr[d]=now;if(C.arr===0){while(mv(dx,0)){}}else mv(dx,0);}}else{if(C.arr===0){while(mv(dx,0)){}}else{while(now-dirLastArr[d]>=C.arr){dirLastArr[d]+=C.arr;if(!mv(dx,0))break;}}}}if(sdHeld&&C.sdf<41){const iv=Math.max(10,curGrav/C.sdf);while(now-sdLastT>=iv){sdLastT+=iv;if(mv(0,1))scr++;else break;}}}
-
 function doPause(){pau=true;pT0=performance.now();dirPress={left:0,right:0};sdHeld=false;kd={};$('olPause').classList.remove('hidden');}
 function unpause(){pAcc+=performance.now()-pT0;pau=false;kd={};dirPress={left:0,right:0};sdHeld=false;lastFrameT=performance.now();$('olPause').classList.add('hidden');}
-function menuRestart(){clrTm();kd={};dirPress={left:0,right:0};sdHeld=false;$('olPause').classList.add('hidden');$('olResult').classList.add('hidden');resetG();doCd(()=>{on=true;t0=performance.now();pAcc=0;gravAccum=0;lastFrameT=performance.now();curGrav=C.grav;spawn();loop();});}
-function toMenu(){on=false;pau=false;clrTm();kd={};resetting=false;$('olPause').classList.add('hidden');$('olResult').classList.add('hidden');$('gameArea').style.display='none';$('olMain').classList.remove('hidden');updUI();}
-function die(){on=false;clrTm();$('resTitle').textContent='GAME OVER';showRes();}
-function win(){on=false;clrTm();$('resTitle').textContent='CLEAR';showRes();}
-function showRes(){const t=elapsed/1000,p=t>0?(pcCnt/t).toFixed(2):'0.00';$('rCmb').textContent=mCmb;$('rScr').textContent=scr.toLocaleString();$('rLin').textContent=lin;$('rTim').textContent=ft(elapsed);$('rPcs').textContent=pcCnt;$('rPps').textContent=p;$('rAc').textContent=acCnt;$('rSpn').textContent=spnCnt;$('olResult').classList.remove('hidden');}
+function menuRestart(){clrTm();stopOpp();kd={};dirPress={left:0,right:0};sdHeld=false;$('olPause').classList.add('hidden');$('olResult').classList.add('hidden');resetG();doCd(()=>{on=true;t0=performance.now();pAcc=0;gravAccum=0;lastFrameT=performance.now();curGrav=C.grav;spawn();loop();if(C.opp.on)startOpp();});}
+function toMenu(){on=false;pau=false;clrTm();stopOpp();kd={};resetting=false;$('olPause').classList.add('hidden');$('olResult').classList.add('hidden');$('gameArea').style.display='none';$('olMain').classList.remove('hidden');updUI();}
+function die(){on=false;clrTm();stopOpp();$('resTitle').textContent='GAME OVER';showRes();}
+function win(){on=false;clrTm();stopOpp();$('resTitle').textContent='CLEAR';showRes();}
+function showRes(){const t=elapsed/1000,p=t>0?(pcCnt/t).toFixed(2):'0.00';$('rCmb').textContent=mCmb;$('rScr').textContent=scr.toLocaleString();$('rLin').textContent=lin;$('rTim').textContent=ft(elapsed);$('rPcs').textContent=pcCnt;$('rPps').textContent=p;$('rAc').textContent=acCnt;$('rSpn').textContent=spnCnt;$('rGarbage').textContent=totalGbIn;$('rCounter').textContent=totalCounterOut;$('olResult').classList.remove('hidden');}
 function chkGoal(){const g=C.goals;return(g.cmb.on&&mCmb>=g.cmb.v)||(g.lin.on&&lin>=g.lin.v)||(g.scr.on&&scr>=g.scr.v)||(g.tim.on&&elapsed/1000>=g.tim.v);}
 function calcGrav(){if(!C.gravUp)return C.grav;const s=elapsed/1000;return Math.max(C.grav-Math.floor(s/C.gravInt)*C.gravAmt,C.gravMin);}
 
-function loop(){if(!on)return;const now=performance.now();if(!pau){let dt=now-lastFrameT;if(dt>1000)dt=1000;lastFrameT=now;elapsed=now-t0-pAcc;processInput(now);curGrav=calcGrav();if(cp&&curGrav>0){gravAccum+=dt;while(gravAccum>=curGrav){gravAccum-=curGrav;if(!gravDrop()){gravAccum=0;rstLock();break;}}}if(C.gravUp)$('gravInd').textContent='G:'+curGrav+'ms';else $('gravInd').textContent='';if(C.goals.tim.on&&elapsed/1000>=C.goals.tim.v){win();return;}updSt();}render();anim=requestAnimationFrame(loop);}
+// ══════════════════════════════════
+// MAIN LOOP
+// ══════════════════════════════════
+function loop(){
+  if(!on)return;
+  const now=performance.now();
+  if(!pau){
+    let dt=now-lastFrameT;if(dt>1000)dt=1000;lastFrameT=now;
+    elapsed=now-t0-pAcc;
+    processInput(now);
+    curGrav=calcGrav();
+    if(cp&&curGrav>0){gravAccum+=dt;while(gravAccum>=curGrav){gravAccum-=curGrav;if(!gravDrop()){gravAccum=0;rstLock();break;}}}
+    if(C.gravUp)$('gravInd').textContent='G:'+curGrav+'ms';else $('gravInd').textContent='';
+    if(C.goals.tim.on&&elapsed/1000>=C.goals.tim.v){win();return;}
+    updSt();
+  }
+  render();
+  anim=requestAnimationFrame(loop);
+}
 
-function render(){const cv=$('gCvs'),cx=cv.getContext('2d');cx.fillStyle='#0a0a0e';cx.fillRect(0,0,cv.width,cv.height);cx.fillStyle='#08080c';cx.fillRect(0,0,W*CS,SE*CS);cx.strokeStyle='#333';cx.lineWidth=2;cx.beginPath();cx.moveTo(0,SE*CS);cx.lineTo(W*CS,SE*CS);cx.stroke();cx.fillStyle='#111';cx.fillRect(0,SE*CS,W*CS,VIS*CS);if(C.grid){cx.strokeStyle='#1a1a2e';cx.lineWidth=1;for(let r=SE;r<=DR;r++){cx.beginPath();cx.moveTo(0,r*CS);cx.lineTo(W*CS,r*CS);cx.stroke();}for(let c=0;c<=W;c++){cx.beginPath();cx.moveTo(c*CS,SE*CS);cx.lineTo(c*CS,DR*CS);cx.stroke();}}for(let r=DS;r<H;r++)for(let c=0;c<W;c++){if(brd[r][c])dCell(cx,c,r-DS,COL[brd[r][c]]);}if(cp){const sh=gs();if(C.ghost){const gy=ghostY();cx.globalAlpha=0.25;for(let r=0;r<sh.length;r++)for(let c=0;c<sh[r].length;c++){if(!sh[r][c])continue;const dr=gy+r-DS;if(dr>=0&&dr<DR)dCell(cx,cp.x+c,dr,COL[cp.type]);}cx.globalAlpha=1;}for(let r=0;r<sh.length;r++)for(let c=0;c<sh[r].length;c++){if(!sh[r][c])continue;const dr=cp.y+r-DS;if(dr>=0&&dr<DR)dCell(cx,cp.x+c,dr,COL[cp.type]);}}dHold();dNext();}
+// ══════════════════════════════════
+// RENDER
+// ══════════════════════════════════
+function render(){
+  const cv=$('gCvs'),cx=cv.getContext('2d');
+  cx.fillStyle='#0a0a0e';cx.fillRect(0,0,cv.width,cv.height);
+  cx.fillStyle='#08080c';cx.fillRect(0,0,W*CS,SE*CS);
+  cx.strokeStyle='#333';cx.lineWidth=2;cx.beginPath();cx.moveTo(0,SE*CS);cx.lineTo(W*CS,SE*CS);cx.stroke();
+  cx.fillStyle='#111';cx.fillRect(0,SE*CS,W*CS,VIS*CS);
+  if(C.grid){cx.strokeStyle='#1a1a2e';cx.lineWidth=1;for(let r=SE;r<=DR;r++){cx.beginPath();cx.moveTo(0,r*CS);cx.lineTo(W*CS,r*CS);cx.stroke();}for(let c=0;c<=W;c++){cx.beginPath();cx.moveTo(c*CS,SE*CS);cx.lineTo(c*CS,DR*CS);cx.stroke();}}
+  // draw board cells
+  for(let r=DS;r<H;r++)for(let c=0;c<W;c++){
+    if(!brd[r][c])continue;
+    const v=brd[r][c];
+    if(v==='G'){
+      // garbage: dark orange
+      cx.fillStyle='#3a2211';cx.fillRect(c*CS+1,(r-DS)*CS+1,CS-2,CS-2);
+      cx.fillStyle='rgba(255,120,30,.25)';cx.fillRect(c*CS+1,(r-DS)*CS+1,CS-2,CS-2);
+      // hole indicator tint
+    } else {
+      dCell(cx,c,r-DS,COL[v]);
+    }
+  }
+  // ghost
+  if(cp){const sh=gs();if(C.ghost){const gy=ghostY();cx.globalAlpha=0.25;for(let r=0;r<sh.length;r++)for(let c=0;c<sh[r].length;c++){if(!sh[r][c])continue;const dr=gy+r-DS;if(dr>=0&&dr<DR)dCell(cx,cp.x+c,dr,COL[cp.type]);}cx.globalAlpha=1;}for(let r=0;r<sh.length;r++)for(let c=0;c<sh[r].length;c++){if(!sh[r][c])continue;const dr=cp.y+r-DS;if(dr>=0&&dr<DR)dCell(cx,cp.x+c,dr,COL[cp.type]);}}
+  // garbage queue bar on right edge
+  if(garbageQueue>0){
+    const cap=16;const pct=Math.min(garbageQueue/cap,1);
+    const barH=pct*(VIS*CS);
+    const grad=cx.createLinearGradient(0,SE*CS+(VIS*CS-barH),0,DR*CS);
+    grad.addColorStop(0,'rgba(255,100,0,.3)');grad.addColorStop(1,'rgba(255,0,0,.8)');
+    cx.fillStyle=grad;
+    cx.fillRect(W*CS-5,SE*CS+(VIS*CS-barH),5,barH);
+  }
+  dHold();dNext();
+  if(C.opp.on)renderOpp();
+}
+
 function dCell(c,col,row,color){const x=col*CS,y=row*CS;c.fillStyle=color;c.fillRect(x+1,y+1,CS-2,CS-2);c.fillStyle='rgba(255,255,255,.2)';c.fillRect(x+1,y+1,CS-2,3);c.fillRect(x+1,y+1,3,CS-2);c.fillStyle='rgba(0,0,0,.25)';c.fillRect(x+CS-3,y+1,2,CS-2);c.fillRect(x+1,y+CS-3,CS-2,2);}
 function dPrev(c,type,ox,oy,cs){if(!type)return;const sh=SH[type][0];let mnC=9,mxC=0,mnR=9,mxR=0;for(let r=0;r<sh.length;r++)for(let cl=0;cl<sh[r].length;cl++)if(sh[r][cl]){mnC=Math.min(mnC,cl);mxC=Math.max(mxC,cl);mnR=Math.min(mnR,r);mxR=Math.max(mxR,r);}const pw=(mxC-mnC+1)*cs,ph=(mxR-mnR+1)*cs;for(let r=0;r<sh.length;r++)for(let cl=0;cl<sh[r].length;cl++){if(!sh[r][cl])continue;const x=ox+(cl-mnC)*cs+(80-pw)/2,y=oy+(r-mnR)*cs+(40-ph)/2;c.fillStyle=COL[type];c.fillRect(x+1,y+1,cs-2,cs-2);c.fillStyle='rgba(255,255,255,.2)';c.fillRect(x+1,y+1,cs-2,2);}}
 function dHold(){const hx=$('hCvs').getContext('2d');hx.clearRect(0,0,100,60);if(holdT){hx.globalAlpha=holdUsed?.35:1;dPrev(hx,holdT,10,10,18);hx.globalAlpha=1;}}
 function dNext(){const nx=$('nCvs').getContext('2d');nx.clearRect(0,0,100,380);for(let i=0;i<Math.min(C.nxtN,nxt.length);i++)dPrev(nx,nxt[i],10,10+i*62,18);}
-function updSt(){$('uCmb').textContent=cmb;$('uMCmb').textContent=mCmb;$('uScr').textContent=scr.toLocaleString();$('uLin').textContent=lin;$('uAc').textContent=acCnt;$('uTim').textContent=ft(elapsed);const t=elapsed/1000;$('uPps').textContent=t>0?(pcCnt/t).toFixed(2):'0.00';}
+function updSt(){$('uCmb').textContent=cmb;$('uMCmb').textContent=mCmb;$('uScr').textContent=scr.toLocaleString();$('uLin').textContent=lin;$('uAc').textContent=acCnt;$('uTim').textContent=ft(elapsed);const t=elapsed/1000;$('uPps').textContent=t>0?(pcCnt/t).toFixed(2):'0.00';$('uGarbage').textContent=totalGbIn;}
 function ft(ms){const s=ms/1000|0;return(s/60|0)+':'+('0'+s%60).slice(-2);}
+function showAC(){const el=$('acTxt');el.classList.remove('active');void el.offsetWidth;el.classList.add('active');setTimeout(()=>el.classList.remove('active'),2200);}
+function showEv(txt,col){const box=$('actTexts'),e=document.createElement('div');e.className='action-text';e.textContent=txt;e.style.color=col;evtY+=26;if(evtY>DR*CS-30)evtY=10;e.style.top=evtY+'px';box.appendChild(e);setTimeout(()=>e.remove(),1500);}
+function doFlash(cls){const e=$('zFlash');e.className='zflash '+cls;setTimeout(()=>e.className='zflash',1000);}
+
 init();
 </script>
 </body>
